@@ -5,93 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Aux Battle</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .battle-container {
-            display: flex;
-            justify-content: space-between;
-            width: 90%;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .player-container {
-            width: 40%;
-            text-align: center;
-        }
-        .prompt-container {
-            width: 20%;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 18px;
-            color: #555;
-        }
-        input {
-            padding: 10px;
-            margin: 10px;
-            width: 80%;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #1DB954;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-        iframe {
-            margin-top: 20px;
-        }
-        .vote-container {
-            position: absolute;
-            bottom: 20px;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-        .vote-container button {
-            margin: 0 10px;
-        }
-        .score {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        .winner-message {
-            margin-top: 20px;
-            font-size: 24px;
-            color: #FF6347;
-        }
-        .prompt-image {
-            display: block;
-            max-width: 300px;
-            max-height: 300px;
-            border-radius: 10px;
-            object-fit: cover;
-            margin-top: 10px;
-        }
-        .prompt-choice {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .hidden {
-            display: none;
-        }
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="/static/style.css">
 
-    </style>
+
 </head>
 <body>
     <!-- Prompt Type Selection -->
@@ -131,83 +48,65 @@
 
     <!-- Voting Section -->
     <div id="voteContainer" class="vote-container hidden">
-        <button onclick="vote(1)">Vote for Player 1</button>
-        <button onclick="vote(2)">Vote for Player 2</button>
+        <input type="number" id="votesPlayer1" placeholder="Enter Player 1 Votes" required>
+        <input type="number" id="votesPlayer2" placeholder="Enter Player 2 Votes" required>
+        <button onclick="addScores()">Add Scores</button>
     </div>
 
     <!-- Winner Section -->
     <div id="winnerMessage" class="winner-message"></div>
 
     <script>
-        // Scores for both players
+        // Scores and rounds
         let player1Score = 0;
         let player2Score = 0;
-        
+        let rounds = 0;
+        const maxRounds = 5;
+
         // Arrays for text prompts and image prompts
         let prompts = [
             "Best Song for a Road Trip",
             "Best Party Song",
             "Best Song to Dance To",
-            "Traveling Through Spcae",
-            "Tripping on Acid"
+            "Most Hated Song"
         ];
-        
         let promptImages = [
             "/pics/roadtrip.jpg",
             "/pics/campfire.jpg",
             "/pics/concert.jpg",
-            "/pics/joe.jpg",
-            "/pics/winter_fire.jpg"
+            "/pics/joe.jpg"
         ];
-        
-        let currentPromptIndex = 0;
-        let promptType = null; // Tracks if "text" or "image" is selected
 
-        // Prompt selection handler
+        let currentPromptIndex = 0;
+        let promptType = null;
+
         function selectPromptType(type) {
             promptType = type;
-
-            // Hide the selection buttons and show the battle container
             document.getElementById('promptChoiceContainer').classList.add('hidden');
             document.getElementById('battleContainer').classList.remove('hidden');
             document.getElementById('voteContainer').classList.remove('hidden');
-
-            // Set up the first prompt
             updatePrompt();
         }
 
-        // Get Spotify embed function
         function getSpotifyEmbed(songInputId, artistInputId, embedContainerId) {
             const songName = document.getElementById(songInputId).value;
             const artistName = document.getElementById(artistInputId).value;
-
-            // Validate input for song name
             if (songName === '') {
                 alert("Please enter a song name!");
                 return;
             }
-
-            // Create the request body, adding the artist name only if provided
-            const requestBody = {
-                song_name: songName
-            };
-            if (artistName !== '') {
-                requestBody.artist_name = artistName;
-            }
-
-            // Make a POST request to the Flask backend
+            const requestBody = { song_name: songName };
+            if (artistName !== '') requestBody.artist_name = artistName;
             fetch('/get_embed_url', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(requestBody)
             })
             .then(response => response.json())
             .then(data => {
                 if (data.embed_url) {
-                    const embedContainer = document.getElementById(embedContainerId);
-                    embedContainer.innerHTML = `<iframe style="border-radius:12px" src="${data.embed_url}" width="300" height="380" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+                    document.getElementById(embedContainerId).innerHTML = `<iframe style="border-radius:12px" src="${data.embed_url}" width="250" height="330" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>`;
+                    // <iframe style="border-radius:12px" src="${data.embed_url}" width="300" height="380" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 } else {
                     alert("Song not found!");
                 }
@@ -215,65 +114,83 @@
             .catch(error => console.error('Error fetching song:', error));
         }
 
-        // Voting Function
-        function vote(player) {
-            if (player === 1) {
-                player1Score++;
-                document.getElementById('player1Score').innerText = player1Score;
-            } else if (player === 2) {
-                player2Score++;
-                document.getElementById('player2Score').innerText = player2Score;
+        function addScores() {
+            const votesPlayer1 = parseInt(document.getElementById('votesPlayer1').value);
+            const votesPlayer2 = parseInt(document.getElementById('votesPlayer2').value);
+
+            if (isNaN(votesPlayer1) || isNaN(votesPlayer2)) {
+                alert("Please enter valid votes for both players.");
+                return;
             }
 
-            // Check if any player has reached 5 points
-            if (player1Score === 5) {
-                document.getElementById('winnerMessage').innerText = "Player 1 Wins!";
-                resetGame();
-            } else if (player2Score === 5) {
-                document.getElementById('winnerMessage').innerText = "Player 2 Wins!";
-                resetGame();
+            const totalVotes = votesPlayer1 + votesPlayer2;
+
+            const percentagePlayer1 = (votesPlayer1 / totalVotes) * 100;
+            const percentagePlayer2 = (votesPlayer2 / totalVotes) * 100;
+
+            player1Score += percentagePlayer1;
+            player2Score += percentagePlayer2;
+
+            document.getElementById('player1Score').innerText = Math.round(player1Score);
+            document.getElementById('player2Score').innerText = Math.round(player2Score);
+
+            rounds++;
+            if (rounds === maxRounds) {
+                determineWinner();
             } else {
-                // Update prompt and reset song selections
                 updatePrompt();
-                resetSongs();
+                resetVotes();
             }
         }
 
-        // Update the prompt based on the chosen type (text or image)
         function updatePrompt() {
             currentPromptIndex = (currentPromptIndex + 1) % prompts.length;
-
             if (promptType === 'text') {
                 document.getElementById('prompt').innerText = `Prompt: ${prompts[currentPromptIndex]}`;
-                document.getElementById('promptImage').classList.add('hidden'); // Hide the image
-                document.getElementById('prompt').classList.remove('hidden');  // Show the text
+                document.getElementById('promptImage').classList.add('hidden');
+                document.getElementById('prompt').classList.remove('hidden');
             } else if (promptType === 'image') {
                 document.getElementById('promptImage').src = promptImages[currentPromptIndex];
-                document.getElementById('promptImage').classList.remove('hidden'); // Show the image
-                document.getElementById('prompt').classList.add('hidden');  // Hide the text
+                document.getElementById('promptImage').classList.remove('hidden');
+                document.getElementById('prompt').classList.add('hidden');
             }
         }
 
-        // Reset the song inputs and embed containers
-        function resetSongs() {
-            document.getElementById('songName1').value = '';
-            document.getElementById('artistName1').value = '';
-            document.getElementById('embedContainer1').innerHTML = '';
-
-            document.getElementById('songName2').value = '';
-            document.getElementById('artistName2').value = '';
-            document.getElementById('embedContainer2').innerHTML = '';
+        function resetVotes() {
+            document.getElementById('votesPlayer1').value = '';
+            document.getElementById('votesPlayer2').value = '';
         }
 
-        // Reset the game (scores)
+        function determineWinner() {
+            if (player1Score > player2Score) {
+                document.getElementById('winnerMessage').innerText = "Player 1 Wins!";
+                 } else if (player2Score > player1Score) {
+                document.getElementById('winnerMessage').innerText = "Player 2 Wins!";
+            } else {
+                document.getElementById('winnerMessage').innerText = "It's a Tie!";
+            }
+
+            // Reset game after determining winner
+            resetGame();
+        }
+
         function resetGame() {
             player1Score = 0;
             player2Score = 0;
-            updatePrompt();
-            resetSongs();
+            rounds = 0;
+
+            // Reset the displayed scores
             document.getElementById('player1Score').innerText = player1Score;
             document.getElementById('player2Score').innerText = player2Score;
-            document.getElementById('winnerMessage').innerText = '';
+
+            // Reset votes and prompts
+            resetVotes();
+            updatePrompt();
+            
+            // Hide winner message after a few seconds
+            setTimeout(() => {
+                document.getElementById('winnerMessage').innerText = '';
+            }, 5000);
         }
     </script>
 </body>

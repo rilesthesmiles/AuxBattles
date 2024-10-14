@@ -1,0 +1,238 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.battle-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.player-container {
+    width: 40%;
+    text-align: center;
+}
+.prompt-container {
+    width: 20%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    color: #555;
+}
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+}
+button {
+    padding: 10px 20px;
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+iframe {
+    margin-top: 20px;
+}
+.score {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.winner-message {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #FF6347;
+}
+.prompt-image {
+    display: block;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-top: 10px;
+}
+.prompt-choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.hidden {
+    display: none;
+}
+
+ */
+
+
+
+ /* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container for the battle */
+.battle-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    background-color: #1E1E1E;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* Player containers */
+.player-container {
+    width: 40%;
+    text-align: center;
+    background-color: #2C2C2C;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.player-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Prompt container */
+.prompt-container {
+    width: 20%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #E0E0E0;
+}
+
+.prompt-container img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* Input and buttons styling */
+input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #1ed760;
+}
+
+/* Embedded Spotify iframe */
+iframe {
+    margin-top: 20px;
+    border-radius: 12px;
+    border: none;
+    width: 300px;
+    height: 380px;
+}
+
+/* Score styling */
+.score {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #1DB954;
+}
+
+/* Winner message */
+.winner-message {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #FF6347;
+}
+
+/* Voting section */
+.vote-container {
+    margin-top: 20px;
+}
+
+/* Prompt choice buttons */
+.prompt-choice button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #E0E0E0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.prompt-choice button:hover {
+    background-color: #444;
+}
+
+/* Hidden class for toggling visibility */
+.hidden {
+    display: none;
+}
+
+/* Player vote section */
+.vote-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.vote-inputs input {
+    width: 48%;
+}
+
+/* Add Scores button */
+.add-scores-button {
+    background-color: #1DB954;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-scores-button:hover {
+    background-color: #1ed760;
+}

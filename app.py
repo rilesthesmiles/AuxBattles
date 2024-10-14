@@ -1,12 +1,14 @@
 import base64
 import requests
 from flask import Flask, request, jsonify, send_from_directory
+from flask import render_template
 
 app = Flask(__name__)
 
 # Your Spotify client ID and client secret
 client_id = ''
 client_secret = ''
+
 
 # Step 1: Get Access Token using Client Credentials Flow
 def get_access_token(client_id, client_secret):
@@ -72,6 +74,8 @@ def get_embed_url():
 @app.route('/')
 def serve_spotify_page():
     return send_from_directory('static', 'spotify.html')
+
+
 
 # Serve the pics directory for images
 @app.route('/pics/<path:filename>')
