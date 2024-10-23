@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aux Battle - Current Scores</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
+    <script>
+        window.onload = function() {
+            // Get cumulative scores from localStorage
+            const player1TotalScore = localStorage.getItem('player1_total_score');
+            const player2TotalScore = localStorage.getItem('player2_total_score');
+    
+            if (player1TotalScore && player2TotalScore) {
+                document.getElementById('player1Score').innerText = `Player 1 Total Points: ${player1TotalScore}`;
+                document.getElementById('player2Score').innerText = `Player 2 Total Points: ${player2TotalScore}`;
+            } else {
+                alert("Scores not available.");
+            }
+        };
+    
+        function nextRound() {
+            // Increment the round
+            let currentRound = parseInt(localStorage.getItem('current_round')) || 1;
+            currentRound++;
+    
+            if (currentRound > maxRounds) {
+                alert("Game over! Redirecting to final results.");
+                window.location.href = '/final_results'; // Redirect to final results
+            } else {
+                // Increment prompt index and store it
+                let currentPromptIndex = parseInt(localStorage.getItem('current_prompt_index')) || 0;
+                currentPromptIndex = (currentPromptIndex + 1) % prompts.length; // Cycle through prompts
+    
+                // Store the updated round and prompt index in localStorage
+                localStorage.setItem('current_round', currentRound);
+                localStorage.setItem('current_prompt_index', currentPromptIndex);
+    
+                // Get the prompt type from localStorage and redirect to Player 1 for the next round
+                const promptType = localStorage.getItem('prompt_type') || 'text';
+                window.location.href = `/person_one?promptType=${promptType}`;
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="result-container">
+        <h2>Current Round Results</h2>
+        <div id="player1Score">Player 1 Total Points: </div>
+        <div id="player2Score">Player 2 Total Points: </div>
+        
+        <!-- Next Round Button -->
+        <button onclick="nextRound()">Next Round</button>
+    </div>
+</body>
+</html>

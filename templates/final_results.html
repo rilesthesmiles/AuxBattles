@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aux Battle - Final Results</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
+    <script>
+        window.onload = function() {
+            // Get cumulative scores from localStorage for the final results
+            const player1TotalScore = localStorage.getItem('player1_total_score');
+            const player2TotalScore = localStorage.getItem('player2_total_score');
+
+            if (player1TotalScore && player2TotalScore) {
+                document.getElementById('player1Score').innerText = `Player 1 Total Points: ${player1TotalScore}`;
+                document.getElementById('player2Score').innerText = `Player 2 Total Points: ${player2TotalScore}`;
+            } else {
+                alert("Final scores not available.");
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="result-container">
+        <h2>Final Game Results</h2>
+        <div id="player1Score">Player 1 Total Points: </div>
+        <div id="player2Score">Player 2 Total Points: </div>
+        
+        <!-- Button to reset the game and start a new one -->
+        <button onclick="window.location.href='/'">Start New Game</button>
+    </div>
+</body>
+</html>

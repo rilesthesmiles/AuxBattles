@@ -97,5 +97,19 @@ def serve_person_two_page():
 def serve_voting_page():
     return render_template('voting.html')
 
+@app.route('/loading')
+def serve_loading_page():
+    return render_template('loading_screen.html')
+
+@app.route('/score_results')
+def serve_score_results():
+    return render_template('score_results.html')
+
+@app.route('/final_results')
+def serve_final_results():
+    return render_template('final_results.html')
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
+

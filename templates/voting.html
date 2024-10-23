@@ -21,6 +21,29 @@
                 alert("Both players must select a song.");
             }
         };
+
+        // Updated addScores function
+        function addScores() {
+            const votesPlayer1 = parseInt(document.getElementById('votesPlayer1').value);
+            const votesPlayer2 = parseInt(document.getElementById('votesPlayer2').value);
+
+            if (isNaN(votesPlayer1) || isNaN(votesPlayer2)) {
+                alert("Please enter valid votes for both players.");
+                return;
+            }
+
+            const totalVotes = votesPlayer1 + votesPlayer2;
+
+            const percentagePlayer1 = Math.round((votesPlayer1 / totalVotes) * 100);
+            const percentagePlayer2 = Math.round((votesPlayer2 / totalVotes) * 100);
+
+            // Store the calculated percentages in localStorage
+            localStorage.setItem('player1_score', percentagePlayer1);
+            localStorage.setItem('player2_score', percentagePlayer2);
+
+            // Redirect to score_results.html to display the scores
+            window.location.href = '/score_results';
+        }
     </script>
 </head>
 <body>
@@ -54,3 +77,4 @@
     </div>
 </body>
 </html>
+
