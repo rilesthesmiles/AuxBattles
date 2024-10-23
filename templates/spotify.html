@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Aux Battle</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
+    <script>
+        // Function to get the query parameter
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        window.onload = function() {
+            // Get the prompt type from the URL
+            const promptType = getQueryParam('promptType');
+            
+            if (promptType === 'text') {
+                document.getElementById('prompt').classList.remove('hidden');
+                document.getElementById('promptImage').classList.add('hidden');
+                updatePrompt('text');  // Update with a text prompt
+            } else if (promptType === 'image') {
+                document.getElementById('prompt').classList.add('hidden');
+                document.getElementById('promptImage').classList.remove('hidden');
+                updatePrompt('image');  // Update with an image prompt
+            }
+        };
+    </script>
+</head>
+<body>
+
+    <div id="battleContainer" class="battle-container">
+        <!-- Player 1 Input Section -->
+        <div class="player-container">
+            <h2>Player 1</h2>
+            <input type="text" id="songName1" placeholder="Enter Song Name" required>
+            <input type="text" id="artistName1" placeholder="Enter Artist Name">
+            <button onclick="getSpotifyEmbed('songName1', 'artistName1', 'embedContainer1')">Find Song</button>
+            <div id="embedContainer1"></div>
+            <div class="score">Player 1 Score: <span id="player1Score">0</span></div>
+
+        </div>
+
+        <!-- Prompt Section -->
+        <div id="promptContainer" class="prompt-container">
+            <h2 id="prompt" class="hidden">Prompt</h2>
+            <img id="promptImage" class="prompt-image hidden" src="/static/pics/concert.jpg" alt="Prompt">
+        </div>
+
+        <!-- Player 2 Input Section -->
+        <div class="player-container">
+            <h2>Player 2</h2>
+            <input type="text" id="songName2" placeholder="Enter Song Name" required>
+            <input type="text" id="artistName2" placeholder="Enter Artist Name">
+            <button onclick="getSpotifyEmbed('songName2', 'artistName2', 'embedContainer2')">Find Song</button>
+            <div id="embedContainer2"></div>
+            <div class="score">Player 2 Score: <span id="player2Score">0</span></div>
+        </div>
+    </div>
+
+    <!-- Voting Section -->
+    <div id="voteContainer" class="vote-container hidden">
+        <input type="number" id="votesPlayer1" placeholder="Enter Player 1 Votes" required>
+        <input type="number" id="votesPlayer2" placeholder="Enter Player 2 Votes" required>
+        <button onclick="addScores()">Add Scores</button>
+    </div>
+
+    <!-- Winner Section -->
+    <div id="winnerMessage" class="winner-message"></div>
+
+</body>
+</html>

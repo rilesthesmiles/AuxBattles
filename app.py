@@ -1,14 +1,12 @@
 import base64
 import requests
-from flask import Flask, request, jsonify, send_from_directory
-from flask import render_template
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
 # Your Spotify client ID and client secret
 client_id = ''
 client_secret = ''
-
 
 # Step 1: Get Access Token using Client Credentials Flow
 def get_access_token(client_id, client_secret):
@@ -70,17 +68,34 @@ def get_embed_url():
     else:
         return jsonify({"error": "Failed to retrieve access token"}), 500
 
-# Serve the static HTML file
+
 @app.route('/')
+def serve_index_page():
+    return render_template('index.html')
+
+# Serve the spotify.html file from templates
+@app.route('/spotify')
 def serve_spotify_page():
-    return send_from_directory('static', 'spotify.html')
+    return render_template('spotify.html')
 
+# Add a new route to serve the choose_prompt.html
+@app.route('/choose_prompt')
+def serve_choose_prompt_page():
+    return render_template('choose_prompt.html')
 
+# Serve the person_one.html file from templates
+@app.route('/person_one')
+def serve_person_one_page():
+    return render_template('person_one.html')
 
-# Serve the pics directory for images
-@app.route('/pics/<path:filename>')
-def serve_pics(filename):
-    return send_from_directory('pics', filename)
+@app.route('/person_two')
+def serve_person_two_page():
+    return render_template('person_two.html')
+
+# Serve the voting.html file for the voting page
+@app.route('/voting')
+def serve_voting_page():
+    return render_template('voting.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

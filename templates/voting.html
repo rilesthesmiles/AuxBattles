@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aux Battle - Voting</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
+
+    <script>
+        window.onload = function() {
+            const player1Embed = localStorage.getItem('player1_song');
+            const player2Embed = localStorage.getItem('player2_song');
+            const promptType = getQueryParam('promptType');
+            
+            updatePrompt(promptType);
+
+            if (player1Embed && player2Embed) {
+                document.getElementById('embedContainer1').innerHTML = `<iframe style="border-radius:12px" src="${player1Embed}" width="250" height="330"></iframe>`;
+                document.getElementById('embedContainer2').innerHTML = `<iframe style="border-radius:12px" src="${player2Embed}" width="250" height="330"></iframe>`;
+            } else {
+                alert("Both players must select a song.");
+            }
+        };
+    </script>
+</head>
+<body>
+    <!-- Voting Container holding the songs and prompt horizontally -->
+    <div class="voting-container">
+        <!-- Player 1's Song -->
+        <div class="player-container">
+            <h2>Player 1's Song</h2>
+            <div id="embedContainer1"></div>
+        </div>
+
+        <!-- Prompt Section in the middle -->
+        <div id="promptContainer" class="prompt-container small-prompt-container">
+            <h2 id="prompt" class="hidden">Prompt</h2>
+            <img id="promptImage" class="hidden small-prompt-image" src="/static/pics/concert.jpg" alt="Prompt">
+        </div>
+
+        <!-- Player 2's Song -->
+        <div class="player-container">
+            <h2>Player 2's Song</h2>
+            <div id="embedContainer2"></div>
+        </div>
+    </div>
+
+    <!-- Voting Section under the songs and prompt -->
+    <div class="vote-container">
+        <h3>Vote for the Best Song!</h3>
+        <input type="number" id="votesPlayer1" placeholder="Enter Player 1 Votes" required>
+        <input type="number" id="votesPlayer2" placeholder="Enter Player 2 Votes" required>
+        <button onclick="addScores()">Add Scores</button>
+    </div>
+</body>
+</html>

@@ -1,83 +1,4 @@
-/* body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-.battle-container {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.player-container {
-    width: 40%;
-    text-align: center;
-}
-.prompt-container {
-    width: 20%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 18px;
-    color: #555;
-}
-input {
-    padding: 10px;
-    margin: 10px;
-    width: 80%;
-}
-button {
-    padding: 10px 20px;
-    background-color: #1DB954;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-iframe {
-    margin-top: 20px;
-}
-.score {
-    font-size: 18px;
-    margin-top: 10px;
-}
-.winner-message {
-    margin-top: 20px;
-    font-size: 24px;
-    color: #FF6347;
-}
-.prompt-image {
-    display: block;
-    max-width: 300px;
-    max-height: 300px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-top: 10px;
-}
-.prompt-choice {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.hidden {
-    display: none;
-}
-
- */
-
-
-
- /* General body styling */
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #121212;
@@ -91,10 +12,11 @@ body {
     padding: 20px;
 }
 
-/* Container for the battle */
+/* Container for the battle (Player One & Player Two) */
 .battle-container {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     width: 90%;
     background-color: #1E1E1E;
     padding: 20px;
@@ -105,7 +27,7 @@ body {
 
 /* Player containers */
 .player-container {
-    width: 40%;
+    width: 45%; /* Adjusted width to fit prompt */
     text-align: center;
     background-color: #2C2C2C;
     padding: 20px;
@@ -118,19 +40,21 @@ body {
     margin-bottom: 10px;
 }
 
-/* Prompt container */
+/* Prompt container for player pages */
 .prompt-container {
-    width: 20%;
+    width: 40%;
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     color: #E0E0E0;
+    margin-left: 20px;
 }
 
-.prompt-container img {
-    width: 100%;
+.prompt-container img, .prompt-container h2 {
+    max-width: 100%;
     border-radius: 12px;
     margin-bottom: 10px;
 }
@@ -185,32 +109,51 @@ iframe {
     color: #FF6347;
 }
 
-/* Voting section */
+/* Voting screen layout */
+.voting-container {
+    display: flex;
+    justify-content: space-between; /* Align songs, prompt horizontally */
+    align-items: center;
+    width: 100%;
+    background-color: #1E1E1E;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.song-container {
+    display: flex;
+    justify-content: space-between; /* Align horizontally */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.player-container {
+    flex: 1; /* Each player container takes equal space */
+    text-align: center;
+}
+
+.small-prompt-container {
+    flex: 1;
+    text-align: center;
+    margin: 0 20px;
+}
+
 .vote-container {
+    width: 100%;
+    text-align: center;
     margin-top: 20px;
 }
 
-/* Prompt choice buttons */
-.prompt-choice button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #E0E0E0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Smaller prompt container in the middle */
+.small-prompt-image {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
 }
 
-.prompt-choice button:hover {
-    background-color: #444;
-}
-
-/* Hidden class for toggling visibility */
-.hidden {
-    display: none;
-}
-
-/* Player vote section */
+/* Voting inputs styling */
 .vote-inputs {
     display: flex;
     justify-content: space-between;
@@ -235,4 +178,9 @@ iframe {
 
 .add-scores-button:hover {
     background-color: #1ed760;
+}
+
+/* Hidden class for toggling visibility */
+.hidden {
+    display: none;
 }

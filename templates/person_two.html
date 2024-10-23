@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aux Battle - Player 2</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js" defer></script>
+
+    <script>
+        window.onload = function() {
+            const promptType = getQueryParam('promptType');
+            updatePrompt(promptType);  // Make sure prompt is updated based on the query parameter.
+        };
+    </script>
+</head>
+<body>
+
+    <div class="battle-container">
+        <!-- Player 2 Input Section -->
+        <div class="player-container">
+            <h2>Player 2, Choose Your Song</h2>
+            <input type="text" id="songName2" placeholder="Enter Song Name" required>
+            <input type="text" id="artistName2" placeholder="Enter Artist Name">
+            <button onclick="getSpotifyEmbed('songName2', 'artistName2', 'embedContainer2')">Find Song</button>
+            <div id="embedContainer2"></div>
+            <button onclick="storeSongAndGoToNextPage('player2', 'songName2', 'artistName2', 'embedContainer2', '/voting?promptType=' + getQueryParam('promptType'))">
+                Select This Song
+            </button>
+        </div>
+
+        <!-- Prompt Section -->
+        <div id="promptContainer" class="prompt-container">
+            <h2 id="prompt" class="hidden">Prompt</h2>
+            <img id="promptImage" class="hidden" src="/static/pics/concert.jpg" alt="Prompt">
+        </div>
+    </div>
+
+</body>
+</html>
