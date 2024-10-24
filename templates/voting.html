@@ -2,9 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aux Battle - Voting</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/js/app.js" defer></script>
+
+    <style>
+        .voting-container {
+            display: flex;
+            justify-content: space-between; /* Align songs, prompt horizontally */
+            align-items: center;
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    
+        .player-container {
+            flex: 1; /* Each player container takes equal space */
+            text-align: center;
+            background-color: #F0F0F0;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .player-container h2 {
+            font-size: 1.8rem;
+            color: #1a3c8e;
+            margin-bottom: 20px;
+        }
+    
+        .small-prompt-container {
+            flex: 1;
+            text-align: center;
+            margin: 0 20px;
+        }
+    
+        .small-prompt-image {
+            width: 80%; /* Adjusted width to make the image larger */
+            max-width: 100%; /* Ensures image stays within its container */
+            height: auto;
+            border-radius: 10px;
+        }
+    
+        .vote-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+    
+        .vote-inputs {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+    
+        .vote-inputs input {
+            width: 48%;
+            padding: 12px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            border: 1px solid #DDD;
+        }
+    
+        button {
+            padding: 12px 24px;
+            background-color: #FF6F00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    
+        button:hover {
+            background-color: #FF8F00;
+        }
+
+        .back-arrow {
+            font-size: 2rem;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+    </style>
+    
 
     <script>
         window.onload = function() {
@@ -47,6 +134,7 @@
     </script>
 </head>
 <body>
+    <span class="back-arrow" onclick="window.history.back()">←</span>
     <!-- Voting Container holding the songs and prompt horizontally -->
     <div class="voting-container">
         <!-- Player 1's Song -->
@@ -71,10 +159,11 @@
     <!-- Voting Section under the songs and prompt -->
     <div class="vote-container">
         <h3>Vote for the Best Song!</h3>
-        <input type="number" id="votesPlayer1" placeholder="Enter Player 1 Votes" required>
-        <input type="number" id="votesPlayer2" placeholder="Enter Player 2 Votes" required>
+        <div class="vote-inputs">
+            <input type="number" id="votesPlayer1" placeholder="Enter Player 1 Votes" required>
+            <input type="number" id="votesPlayer2" placeholder="Enter Player 2 Votes" required>
+        </div>
         <button onclick="addScores()">Add Scores</button>
     </div>
 </body>
 </html>
-

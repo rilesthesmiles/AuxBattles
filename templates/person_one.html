@@ -2,9 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aux Battle - Player 1</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/js/app.js" defer></script>
+
+    <style>
+        .battle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 90%;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+        }
+    
+        .player-container {
+            width: 45%;
+            text-align: center;
+            background-color: #F0F0F0;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .player-container h2 {
+            font-size: 1.8rem;
+            color: #1a3c8e;
+            margin-bottom: 20px;
+        }
+    
+        input[type="text"] {
+            padding: 12px;
+            margin: 10px 0;
+            width: 80%;
+            background-color: #EFEFEF;
+            color: #333;
+            border: 2px solid black; /* Black border added */
+            border-radius: 5px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for inputs */
+        }
+    
+        button {
+            padding: 12px 24px;
+            background-color: #FF6F00;
+            color: white;
+            border: none; /* No border for buttons */
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    
+        button:hover {
+            background-color: #FF8F00;
+        }
+    
+        #embedContainer1 {
+            margin-top: 15px;
+        }
+    
+        .prompt-container {
+            width: 50%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    
+        .prompt-container img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .hidden {
+            display: none;
+        }
+
+        .back-arrow {
+            font-size: 2rem;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+    </style>
+    
 
     <script>
         window.onload = function() {
@@ -14,6 +105,7 @@
     </script>
 </head>
 <body>
+    <span class="back-arrow" onclick="window.history.back()">←</span>
 
     <div class="battle-container">
         <!-- Player 1 Input Section -->
@@ -21,7 +113,7 @@
             <h2>Player 1, Choose Your Song</h2>
             <input type="text" id="songName1" placeholder="Enter Song Name" required>
             <input type="text" id="artistName1" placeholder="Enter Artist Name">
-            <button onclick="getSpotifyEmbed('songName1', 'artistName1', 'embedContainer1')">Find Song</button>
+            <button onclick="getSpotifyEmbed('songName1', 'artistName1', 'embedContainer1')">Preview Song</button>
             <div id="embedContainer1"></div>
             <button onclick="storeSongAndGoToNextPage('player1', 'songName1', 'artistName1', 'embedContainer1', '/person_two?promptType=' + getQueryParam('promptType'))">
                 Select This Song

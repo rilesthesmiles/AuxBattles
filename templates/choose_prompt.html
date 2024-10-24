@@ -1,14 +1,72 @@
-<!-- choose_prompt.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aux Battle - Choose Prompt</title>
     <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .choose-prompt-container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 50%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #1a3c8e;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #FF6F00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 80%;
+        }
+
+        button:hover {
+            background-color: #FF8F00;
+        }
+
+        .back-arrow {
+            font-size: 2rem;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            cursor: pointer;
+          }
+    </style>
 </head>
 <body>
-    <h2>Choose a Prompt Type:</h2>
-    <button onclick="window.location.href='/person_one?promptType=text'">Text Prompt</button>
-    <button onclick="window.location.href='/person_one?promptType=image'">Image Prompt</button>
+    <span class="back-arrow" onclick="window.history.back()">←</span>
+
+    <div class="choose-prompt-container">
+        <h2>Choose a Prompt Type:</h2>
+        <button onclick="window.location.href='/person_one?promptType=text'">Text Prompt</button>
+        <button onclick="window.location.href='/person_one?promptType=image'">Image Prompt</button>
+    </div>
+
 </body>
 </html>

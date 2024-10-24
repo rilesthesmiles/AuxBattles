@@ -1,6 +1,6 @@
 // Scores and rounds
 let currentRound = parseInt(localStorage.getItem('current_round')) || 1;
-const maxRounds = 3; // Change this if you want more rounds
+const maxRounds = 2; // Change this if you want more rounds
 let player1TotalScore = parseInt(localStorage.getItem('player1_total_score')) || 0;
 let player2TotalScore = parseInt(localStorage.getItem('player2_total_score')) || 0;
 
@@ -235,5 +235,5 @@ function startGame() {
     console.log('Local storage cleared. Starting new game...');
 
     // Redirect to the prompt selection page
-    window.location.href = '/choose_prompt'; 
+    window.location.href = '/game_mode'; 
 }

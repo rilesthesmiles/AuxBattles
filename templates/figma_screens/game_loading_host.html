@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aux Battles - Game Code</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="/static/js/app.js" defer></script>
+
+  <style>
+    .game-code-container {
+      text-align: center;
+      width: 60%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .back-arrow {
+      font-size: 2rem;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #1a3c8e;
+    }
+    .music-icon {
+      font-size: 2.5rem;
+      margin: 0 20px;
+    }
+    .game-code {
+      font-size: 3rem;
+      background-color: #EFEFEF;
+      padding: 20px;
+      width: 50%;
+      margin: 20px auto;
+      border-radius: 10px;
+      color: #333;
+      font-weight: bold;
+      letter-spacing: 5px;
+    }
+    .players-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .player {
+      background-color: #EFEFEF;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 10px;
+      font-size: 1.5rem;
+      color: #1a3c8e;
+    }
+    .start-button {
+      background-color: #FF6F00;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    .start-button:hover {
+      background-color: #FF8F00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game-code-container">
+    <span class="back-arrow" onclick="window.history.back()">←</span>
+    
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <span class="music-icon">🎵</span>
+      <h1>Aux Battles!</h1>
+      <span class="music-icon">🎵</span>
+    </div>
+
+    <h2>Game Code</h2>
+    <div class="game-code">K3P7L</div>
+
+    <h2>Players</h2>
+    <div class="players-container">
+      <div class="player">Your Name Here</div>
+      <div class="player">Poison Ivy</div>
+      <div class="player">Harley</div>
+      <div class="player">Gerald</div>
+      <div class="player">Dr J</div>
+    </div>
+
+
+
+    <button class="start-button" onclick="window.location.href='/tutorial'">
+        <span class="icon"></span>Play
+      </button>
+  </div>
+
+  <script src="/static/js/app.js" defer></script>
+
+</body>
+</html>

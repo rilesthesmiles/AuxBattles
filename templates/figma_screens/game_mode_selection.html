@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aux Battles - Game Mode</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .game-mode-container {
+      text-align: center;
+      width: 60%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .back-arrow {
+      font-size: 2rem;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .game-option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FF6F00;
+      color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border: none;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .game-option:hover {
+      background-color: #FF8F00;
+    }
+    .icon {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game-mode-container">
+    <span class="back-arrow" onclick="window.history.back()">←</span>
+    <h1>Game Mode</h1>
+
+    <button class="game-option" onclick="window.location.href='/host_game'">
+        <span class="icon">🎵</span>Host Game
+      </button>
+  
+      <button class="game-option" onclick="window.location.href='/join_game'">
+        <span class="icon">🎵</span>Join Game
+      </button>
+  
+      <button class="game-option" onclick="window.location.href='/tutorial'">
+        <span class="icon">🎵</span>Solo Play
+      </button>
+  </div>
+
+  <script src="/static/js/app.js" defer></script>
+</body>
+</html>

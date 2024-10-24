@@ -1,4 +1,4 @@
-/* General body styling */
+/* 
 body {
     font-family: Arial, sans-serif;
     background-color: #121212;
@@ -13,7 +13,7 @@ body {
 }
 
 /* Container for the battle (Player One & Player Two) */
-.battle-container {
+/* .battle-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -25,9 +25,9 @@ body {
     margin-bottom: 20px;
 }
 
-/* Player containers */
+Player containers
 .player-container {
-    width: 45%; /* Adjusted width to fit prompt */
+    width: 45%; 
     text-align: center;
     background-color: #2C2C2C;
     padding: 20px;
@@ -41,7 +41,7 @@ body {
 }
 
 /* Prompt container for player pages */
-.prompt-container {
+/* .prompt-container {
     width: 40%;
     text-align: center;
     display: flex;
@@ -57,10 +57,10 @@ body {
     max-width: 100%;
     border-radius: 12px;
     margin-bottom: 10px;
-}
+} */
 
 /* Input and buttons styling */
-input {
+/* input {
     padding: 10px;
     margin: 10px 0;
     width: 80%;
@@ -84,6 +84,195 @@ button {
 
 button:hover {
     background-color: #1ed760;
+} */
+
+/* Embedded Spotify iframe */
+/* iframe {
+    margin-top: 20px;
+    border-radius: 12px;
+    border: none;
+    width: 300px;
+    height: 380px;
+} */
+
+/* Score styling */
+/* .score {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #1DB954;
+} */
+
+/* Winner message */
+/* .winner-message {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #FF6347;
+} */
+
+/* Voting screen layout */
+/* .voting-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #1E1E1E;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.song-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.player-container {
+    flex: 1; 
+    text-align: center;
+}
+
+.small-prompt-container {
+    flex: 1;
+    text-align: center;
+    margin: 0 20px;
+}
+
+.vote-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.small-prompt-image {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+.vote-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.vote-inputs input {
+    width: 48%;
+}
+
+
+.add-scores-button {
+    background-color: #1DB954;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-scores-button:hover {
+    background-color: #1ed760;
+}
+
+
+.hidden {
+    display: none;
+} */
+
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container for the battle (Player One & Player Two) */
+.battle-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Player containers */
+.player-container {
+    width: 45%; /* Adjusted width to fit prompt */
+    text-align: center;
+    background-color: #F0F0F0;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player-container h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Prompt container for player pages */
+.prompt-container {
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin-left: 20px;
+}
+
+.prompt-container img, .prompt-container h2 {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* Input and buttons styling */
+input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 80%;
+    background-color: #EFEFEF;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 12px 24px;
+    background-color: #FF6F00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #FF8F00;
 }
 
 /* Embedded Spotify iframe */
@@ -99,7 +288,7 @@ iframe {
 .score {
     font-size: 1.2rem;
     margin-top: 10px;
-    color: #1DB954;
+    color: #FF6F00;
 }
 
 /* Winner message */
@@ -115,10 +304,10 @@ iframe {
     justify-content: space-between; /* Align songs, prompt horizontally */
     align-items: center;
     width: 100%;
-    background-color: #1E1E1E;
+    background-color: #FFFFFF;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -166,7 +355,7 @@ iframe {
 
 /* Add Scores button */
 .add-scores-button {
-    background-color: #1DB954;
+    background-color: #FF6F00;
     padding: 10px 20px;
     color: white;
     font-size: 1rem;
@@ -177,7 +366,7 @@ iframe {
 }
 
 .add-scores-button:hover {
-    background-color: #1ed760;
+    background-color: #FF8F00;
 }
 
 /* Hidden class for toggling visibility */

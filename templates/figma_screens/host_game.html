@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Host Game - Aux Battles</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .host-game-container {
+      text-align: center;
+      width: 60%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* Ensure elements stay close together */
+      min-height: 100vh;
+    }
+    .back-arrow {
+      font-size: 2rem;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px; /* Reduce bottom margin for less space */
+    }
+    label {
+      font-size: 1.5rem;
+      margin-top: 15px; /* Reduce space between form elements */
+      display: block;
+    }
+    input[type="text"], input[type="number"] {
+      padding: 10px;
+      margin: 5px 0; /* Reduce space above and below inputs */
+      width: 60%;
+      background-color: #EFEFEF;
+      color: #333;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+    .adjustment-buttons {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 5px 0; /* Reduce space between buttons and labels */
+    }
+    .adjustment-buttons span {
+      font-size: 2rem;
+      margin: 0 15px; /* Adjust the space between arrows */
+      color: #555;
+    }
+    .play-button {
+      background-color: #FF6F00;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin: 20px auto 10px; /* Reduce top margin and bottom spacing */
+      width: 80%;
+    }
+    .play-button:hover {
+      background-color: #FF8F00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="host-game-container">
+    <span class="back-arrow" onclick="window.history.back()">←</span>
+    <h1>Host Game</h1>
+
+    <form action="/host_game" method="POST">
+      <label for="hostName">Enter Host Name</label>
+      <input type="text" id="hostName" name="hostName" placeholder="Enter Host Name Here" required>
+
+      <label for="numRounds">Number of Rounds</label>
+      <div class="adjustment-buttons">
+        <button type="button" onclick="decreaseRounds()">&#9664;</button>
+        <span id="rounds">1</span>
+        <button type="button" onclick="increaseRounds()">&#9654;</button>
+      </div>
+      <input type="hidden" id="numRounds" name="numRounds" value="1">
+
+      <label for="playbackDuration">Music Playback Duration (seconds)</label>
+      <div class="adjustment-buttons">
+        <button type="button" onclick="decreaseDuration()">&#9664;</button>
+        <span id="duration">10</span> s
+        <button type="button" onclick="increaseDuration()">&#9654;</button>
+      </div>
+      <input type="hidden" id="playbackDuration" name="playbackDuration" value="10">
+    </form>
+
+    <!-- Play button at the bottom of the form -->
+    <div>
+      <button class="play-button" onclick="window.location.href='/game_loading_host'">
+        Play
+      </button>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js" defer></script>
+
+  <script>
+    // JavaScript to handle round and duration adjustments
+    let rounds = 1;
+    let duration = 10;
+
+    function increaseRounds() {
+      rounds += 1;
+      document.getElementById('rounds').innerText = rounds;
+      document.getElementById('numRounds').value = rounds;
+    }
+
+    function decreaseRounds() {
+      if (rounds > 1) {
+        rounds -= 1;
+        document.getElementById('rounds').innerText = rounds;
+        document.getElementById('numRounds').value = rounds;
+      }
+    }
+
+    function increaseDuration() {
+      duration += 5;
+      document.getElementById('duration').innerText = duration;
+      document.getElementById('playbackDuration').value = duration;
+    }
+
+    function decreaseDuration() {
+      if (duration > 5) {
+        duration -= 5;
+        document.getElementById('duration').innerText = duration;
+        document.getElementById('playbackDuration').value = duration;
+      }
+    }
+  </script>
+
+</body>
+</html>

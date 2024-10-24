@@ -1,15 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Aux Battle</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <script src="/static/js/app.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aux Battles Welcome Screen</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="/static/js/app.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #F5F5F5;
+    }
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 50%;
+      z-index: 0; /* Behind the popup */
+    }
+    .logo {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      display: block;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .play-button {
+      background-color: #FF6F00;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .play-button:hover {
+      background-color: #FF8F00;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    button {
+      padding: 20px 40px; /* Increase padding for a larger button */
+      font-size: 1.5rem; /* Increase the font size */
+      background-color: #FF6F00;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    
+    button:hover {
+      background-color: #FF8F00;
+    }
+
+    /* Popup styles */
+    .popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Changed from space-between to minimize gaps */
+        align-items: center;
+    }
+    
+    .popup h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-top: 0;
+        margin-bottom: 10px; /* Reduced margin below title */
+    }
+    
+    .popup p {
+        font-size: 1rem;
+        color: #666;
+        margin: 10px 0; /* Keeps some spacing between text and title */
+    }
+    
+    .popup .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    
+    .popup .okay-button {
+        background-color: #6a0dad;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-top: 15px; /* Reduced margin */
+        align-self: center; /* Centers the button horizontally */
+    }
+    
+    .popup .okay-button:hover {
+        background-color: #8536b7;
+    }
+    
+
+    /* Dimmed background effect */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+      z-index: 1;
+    }
+  </style>
 </head>
 <body>
-    <div class="index-container">
-        <h1>Welcome to Aux Battle!</h1>
-        <button onclick="startGame()">Play</button> <!-- Button to start the game -->
-    </div>
+
+  <!-- Background container -->
+  <div class="container">
+    <h1>Welcome To</h1>
+    <img src="/static/pics/logo.png" alt="Aux Battles Logo" class="logo">
+    <h2>Aux Battles!</h2>
+    <button onclick="startGame()" class="play-button">Play</button>
+    <p>Compete with friends, locally or worldwide!</p>
+  </div>
+
+  <!-- Overlay to dim background -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Popup modal -->
+  <div class="popup" id="popup">
+    <span class="close" id="closePopup">&times;</span>
+    <h3>Notice: App in Testing Phase</h3>
+    <p>Thank you for trying Aux Battles! This app is still in development, so you may encounter bugs or incomplete features. We appreciate your feedback and patience as we work to improve the full experience.</p>
+    <button class="okay-button" id="okayButton">Okay</button>
+  </div>
+
+  <script>
+    // Close the popup when the X is clicked
+    document.getElementById("closePopup").addEventListener("click", function() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    });
+
+    // Close the popup when the Okay button is clicked
+    document.getElementById("okayButton").addEventListener("click", function() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    });
+  </script>
+
 </body>
 </html>

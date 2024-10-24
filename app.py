@@ -8,6 +8,9 @@ app = Flask(__name__)
 client_id = ''
 client_secret = ''
 
+
+
+
 # Step 1: Get Access Token using Client Credentials Flow
 def get_access_token(client_id, client_secret):
     client_creds = f"{client_id}:{client_secret}"
@@ -109,6 +112,37 @@ def serve_score_results():
 def serve_final_results():
     return render_template('final_results.html')
 
+
+
+
+#Figma
+@app.route('/display')
+def display_screen():
+    return render_template('figma_screens/display_screen.html')
+
+@app.route('/game_mode')
+def game_mode_select_screen():
+    return render_template('figma_screens/game_mode_selection.html')
+
+@app.route('/host_game')
+def host_game_screen():
+    return render_template('figma_screens/host_game.html')
+
+@app.route('/game_loading_host')
+def game_loading_host_screen():
+    return render_template('figma_screens/game_loading_host.html')
+
+@app.route('/join_game')
+def join_game_screen():
+    return render_template('figma_screens/join_game.html')
+
+@app.route('/tutorial')
+def tutorial_screen():
+    return render_template('figma_screens/tutorial.html')
+
+@app.route('/song_list')
+def song_list_screen():
+    return render_template('figma_screens/song_list.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

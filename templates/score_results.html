@@ -2,9 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aux Battle - Current Scores</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/js/app.js" defer></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .result-container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            width: 60%;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #1a3c8e;
+            margin-bottom: 30px;
+        }
+
+        #player1Score, #player2Score {
+            font-size: 1.8rem;
+            margin: 15px 0;
+            background-color: #EFEFEF;
+            padding: 20px;
+            border-radius: 10px;
+            color: #1a3c8e;
+            width: 80%;
+            margin: 10px auto;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #FF6F00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #FF8F00;
+        }
+
+        .back-arrow {
+            font-size: 2rem;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+    </style>
+
     <script>
         window.onload = function() {
             // Get cumulative scores from localStorage
@@ -42,9 +108,10 @@
             }
         }
     </script>
-    
+
 </head>
 <body>
+
     <div class="result-container">
         <h2>Current Round Results</h2>
         <div id="player1Score">Player 1 Total Points: </div>
