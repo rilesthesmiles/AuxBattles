@@ -10,7 +10,6 @@ client_secret = ''
 
 
 
-
 # Step 1: Get Access Token using Client Credentials Flow
 def get_access_token(client_id, client_secret):
     client_creds = f"{client_id}:{client_secret}"
@@ -143,6 +142,10 @@ def tutorial_screen():
 @app.route('/song_list')
 def song_list_screen():
     return render_template('figma_screens/song_list.html')
+
+@app.route('/enter_name')
+def enter_name_screen():
+    return render_template('figma_screens/enter_name.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Screen Name - Aux Battles</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #F5F5F5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .back-arrow {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .screen-name-input {
+      width: 80%;
+      padding: 15px;
+      font-size: 1.5rem;
+      background-color: #E0E0E0;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      color: #000;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .screen-name-input::placeholder {
+      color: #888;
+    }
+
+    .play-button {
+      background-color: #FF6F00;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 80%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .play-button:hover {
+      background-color: #FF8F00;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back Arrow -->
+  <span class="back-arrow" onclick="window.history.back()">←</span>
+
+  <!-- Container for screen name input -->
+  <div class="container">
+    <h1>Enter Screen Name</h1>
+    <input type="text" class="screen-name-input" placeholder="Type Name Here">
+    <button class="play-button" onclick="window.location.href='/game_loading_host'">Play</button>
+  </div>
+
+  <script>
+    function startGame() {
+      // Redirect to the game loading page or perform any desired action
+      alert("Starting the game...");
+      // Example: window.location.href = "/game_loading";
+    }
+  </script>
+</body>
+</html>

@@ -113,7 +113,7 @@
         <div class="player-container">
             <h2>Player 2, Choose Your Song</h2>
             <input type="text" id="songName2" placeholder="Enter Song Name" required>
-            <input type="text" id="artistName2" placeholder="Enter Artist Name">
+            <input type="text" id="artistName2" placeholder="Enter Artist Name (Optional)">
             <button onclick="getSpotifyEmbed('songName2', 'artistName2', 'embedContainer2')">Preview Song</button>
             <div id="embedContainer2"></div>
             <button onclick="storeSongAndGoToNextPage('player2', 'songName2', 'artistName2', 'embedContainer2', '/voting?promptType=' + getQueryParam('promptType'))">
