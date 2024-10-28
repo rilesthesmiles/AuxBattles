@@ -9,7 +9,6 @@ client_id = ''
 client_secret = ''
 
 
-
 # Step 1: Get Access Token using Client Credentials Flow
 def get_access_token(client_id, client_secret):
     client_creds = f"{client_id}:{client_secret}"
