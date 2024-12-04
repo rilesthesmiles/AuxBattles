@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Custom Prompt - Aux Battles</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #F5F5F5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .back-arrow {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .custom-prompt-input {
+      width: 80%;
+      padding: 12px;
+      font-size: 1rem;
+      background-color: #E0E0E0;
+      border: none;
+      border-radius: 8px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .file-upload {
+      width: 80%;
+      margin: 20px auto;
+      text-align: left;
+    }
+
+    .file-upload label {
+      font-size: 1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .file-upload input[type="file"] {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .start-button {
+      background-color: #FF6F00;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 80%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .start-button:hover {
+      background-color: #FF8F00;
+    }
+
+    .note {
+      font-size: 1rem;
+      color: #888;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back Arrow -->
+  <span class="back-arrow" onclick="window.history.back()">←</span>
+
+  <!-- Container for custom prompt input -->
+  <div class="container">
+    <h1>Enter Custom Prompt</h1>
+    <input type="text" class="custom-prompt-input" placeholder="Type your custom text prompt here">
+
+    <div class="file-upload">
+      <label for="file-upload-input">Or upload a file:</label>
+      <input type="file" id="file-upload-input" accept=".jpg,.jpeg,.png,.gif">
+    </div>
+
+    <button class="start-button" onclick="window.location.href='/person_one?promptType=image'">Start</button>
+
+    <!-- Note Section -->
+    <p class="note">Note: This app is a prototype, and the custom prompt section does not work but will in the final product. In the meantime, you will be given an image prompt</p>
+  </div>
+
+</body>
+</html>

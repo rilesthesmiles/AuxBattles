@@ -146,6 +146,10 @@ def song_list_screen():
 def enter_name_screen():
     return render_template('figma_screens/enter_name.html')
 
+@app.route('/custom_prompt')
+def custoom_prompt_screen():
+    return render_template('figma_screens/custom_prompt.html')
+
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
 

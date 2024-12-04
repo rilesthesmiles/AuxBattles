@@ -117,7 +117,7 @@ function updatePrompt(promptType) {
     let currentPromptIndex = parseInt(localStorage.getItem('current_prompt_index')) || 0;
 
     if (promptType === 'text') {
-        document.getElementById('prompt').innerText = `Prompt: ${prompts[currentPromptIndex]}`;
+        document.getElementById('prompt').innerText = `${prompts[currentPromptIndex]}`;
         document.getElementById('prompt').classList.remove('hidden');
         document.getElementById('promptImage').classList.add('hidden');
     } else if (promptType === 'image') {

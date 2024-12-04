@@ -373,3 +373,47 @@ iframe {
 .hidden {
     display: none;
 }
+
+.stacked-song-list {
+    margin-top: 30px;
+    background-color: #F9F9F9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stacked-song-list h2 {
+    font-size: 1.5rem;
+    color: #1a3c8e;
+    margin-bottom: 15px;
+}
+
+.stacked-song-item {
+    display: inline-block; /* Align items horizontally */
+    margin: 0 10px; /* Space between items horizontally */
+    background-color: #FFFFFF;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stacked-song-item iframe {
+    width: 500px; /* Doubled width for inline layout */
+    height: 80px; /* Consistent height */
+    border: none;
+    border-radius: 5px;
+}
+
+/* Ensure the whole list adapts well on smaller screens */
+@media (max-width: 600px) {
+    .stacked-song-item {
+        display: block; /* Stack vertically on small screens */
+        margin: 10px auto; /* Center the items */
+    }
+
+    .stacked-song-item iframe {
+        width: 100%; /* Use full width on smaller screens */
+        height: 70px; /* Slightly smaller height for mobile screens */
+    }
+}

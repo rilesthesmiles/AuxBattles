@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aux Battles - Ready Screen</title>
+  <title>Aux Battles - Tutorial</title>
   <link rel="stylesheet" href="/static/css/style.css">
   <script src="/static/js/app.js" defer></script>
   <style>
@@ -18,45 +18,71 @@
       background-color: #F5F5F5;
     }
 
-    .container {
+    .tutorial-container {
       text-align: center;
       background-color: white;
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       width: 90%;
-      max-width: 400px;
+      max-width: 500px;
+      height: 70vh; /* Consistent card height */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
     }
 
-    .music-icon {
-      font-size: 2rem;
-      color: #1a3c8e;
-      position: absolute;
-      top: 10px;
+    .tutorial-title {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: black;
     }
 
-    .music-left {
-      left: 15px;
-    }
-
-    .music-right {
-      right: 15px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
+    .tutorial-image {
+      height: 40%;
       margin: 10px 0;
-      color: #1a3c8e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    p {
+    .tutorial-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .tutorial-content {
       font-size: 1.3rem;
-      color: #1a3c8e;
-      margin: 30px 0;
+      color: black;
+      margin: 10px 0;
       line-height: 1.5;
     }
 
-    .ready-button {
+    .arrow {
+      position: absolute;
+      top: 50%;
+      font-size: 2.5rem;
+      color: #1a3c8e;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: transform 0.2s;
+    }
+
+    .arrow-left {
+      left: 10px; /* Adjusted position closer to the edge */
+    }
+
+    .arrow-right {
+      right: 10px; /* Adjusted position closer to the edge */
+    }
+
+    .arrow:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .start-button {
       background-color: #FF6F00;
       color: white;
       padding: 15px 30px;
@@ -65,9 +91,10 @@
       font-size: 1.5rem;
       cursor: pointer;
       width: 80%;
+      display: none; /* Hidden by default, shown on the last card */
     }
 
-    .ready-button:hover {
+    .start-button:hover {
       background-color: #FF8F00;
     }
 
@@ -75,11 +102,79 @@
       position: absolute;
       top: 15px;
       left: 15px;
-      font-size: 1.8rem;
+      font-size: 2.5rem; /* Larger for better visibility */
       color: #333;
+      cursor: pointer;
+      z-index: 2; /* Ensures it's above other elements */
+      pointer-events: auto; /* Ensures it's clickable */
+    }
+
+    .fixed-title {
+      position: absolute;
+      top: 20px; /* Adjusted for more space from the top */
+      width: 100%;
+      text-align: center;
+      font-size: 3rem; /* Bigger and bolder */
+      margin-bottom: 10px;
+      color: #1a3c8e;
+      z-index: 1; /* Ensures it stays above other elements */
+      pointer-events: none; /* Prevents clicking on the title */
+    }
+
+    .skip-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .skip-button {
+      background-color: #FF6F00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
       cursor: pointer;
     }
 
+    .skip-button:hover {
+      background-color: #FF8F00;
+    }
+
+    .tutorial-container {
+      text-align: center;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .fixed-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1a3c8e;
+    }
+
+    .start-button {
+      background-color: #FF6F00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: block;
+      margin: 10px auto;
+    }
+
+    .start-button:hover {
+      background-color: #FF8F00;
+    }
+    
   </style>
 </head>
 <body>
@@ -87,19 +182,107 @@
   <!-- Back Arrow -->
   <span class="back-arrow" onclick="window.history.back()">←</span>
 
-  <!-- Music Icons -->
-  <div class="container">
-    <h1>Aux Battles!</h1>
-    <p>Find a song that you think best matches the prompt and then vote on others' song choices</p>
-    <button class="ready-button" onclick="window.location.href='/choose_prompt'">Ready</button>
+  <!-- Fixed Title -->
+  <div class="fixed-title">How To Play</div>
+
+  <!-- Tutorial Container -->
+  <div class="tutorial-container">
+    <h1 class="tutorial-title">Welcome to Aux Battles!</h1>
+    <div class="tutorial-image">
+      <img src="" alt="Tutorial Image">
+    </div>
+    <p class="tutorial-content">Slide content will go here.</p>
+    <button class="start-button" onclick="window.location.href='/choose_prompt'">Start Game</button>
+    <span class="arrow arrow-left" onclick="prevSlide()">&#10094;</span> <!-- Left arrow -->
+    <span class="arrow arrow-right" onclick="nextSlide()">&#10095;</span> <!-- Right arrow -->
+  </div>
+
+  <!-- Skip Tutorial Button -->
+  <div class="skip-container">
+    <button class="skip-button" onclick="window.location.href='/choose_prompt'">Skip Tutorial</button>
   </div>
 
   <script>
-    function startGame() {
-      // Functionality for starting the game can be added here
-      alert("Game starting...");
+
+    const slides = [
+      {
+        title: "Welcome to Aux Battles!",
+        image: "/static/pics/welcome.png",
+        content: "Find the perfect song that matches a given prompt and outshine your opponents!",
+        showButton: false,
+      },
+      {
+        title: "Prompt Selection",
+        image: "/static/pics/prompt.png",
+        content: "Before each game starts, pick either text or picture for your prompt format.",
+        showButton: false,
+      },
+      {
+        title: "Pick A Song",
+        image: "/static/pics/chooseSong.png",
+        content: "Starting with Player 1, use the Song Name and Artist (Optional) box to find a song that fits the prompt on the right.",
+        showButton: false,
+      },
+      {
+        title: "Preview and Pick Your Song",
+        image: "/static/pics/selectSong.png",
+        content: "Click Preview Song to make sure what you typed is what you want. Click Submit to lock in your pick!",
+        showButton: false,
+      },
+      {
+        title: "Listen To Both Songs",
+        image: "/static/pics/listen.png",
+        content: "Once both players have selected their song, listen to both songs by clicking the play buttons one at a time.",
+        showButton: false,
+      },
+      {
+        title: "Vote For Your Favorite",
+        image: "/static/pics/vote.png",
+        content: "Ask the people in the room to vote for their favorite pick and record the number of votes!",
+        showButton: false,
+      },
+      {
+        title: "Best Player Wins",
+        image: "/static/pics/goodLuck.jpg",
+        content: "Repeat the process until you've played your set amount of rounds! Remember, have fun!",
+        showButton: true,
+      },
+    ];
+
+    let currentSlide = 0;
+
+    function updateSlide() {
+      const title = document.querySelector(".tutorial-title");
+      const image = document.querySelector(".tutorial-image");
+      const content = document.querySelector(".tutorial-content");
+      const startButton = document.querySelector(".start-button");
+      const arrowLeft = document.querySelector(".arrow-left");
+      const arrowRight = document.querySelector(".arrow-right");
+
+      title.textContent = slides[currentSlide].title;
+      image.innerHTML = `<img src="${slides[currentSlide].image}" alt="Tutorial Image" style="width:70%; height:auto; border-radius:10px;">`;
+      content.textContent = slides[currentSlide].content;
+      startButton.style.display = slides[currentSlide].showButton ? "block" : "none";
+
+      arrowLeft.style.display = currentSlide === 0 ? "none" : "block";
+      arrowRight.style.display = currentSlide === slides.length - 1 ? "none" : "block";
     }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    updateSlide(); // Initialize the first slide
   </script>
 
 </body>
-</html>

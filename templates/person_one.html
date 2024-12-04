@@ -94,6 +94,19 @@
             left: 20px;
             top: 20px;
         }
+
+        input:disabled {
+            background-color: #D3D3D3; /* Light gray to indicate disabled */
+            color: #777; /* Subtle text color */
+            cursor: not-allowed; /* Change cursor to indicate non-clickable */
+          }
+
+          .prompt-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a3c8e; /* Matches other text styles */
+            margin-bottom: 10px;
+          }
     </style>
     
 
@@ -110,9 +123,11 @@
     <div class="battle-container">
         <!-- Player 1 Input Section -->
         <div class="player-container">
-            <h2>Player 1, Choose Your Song</h2>
+            <h2>Player 1</h2>
+            <h3>Choose a Song to Match the Prompt</h3>
             <input type="text" id="songName1" placeholder="Enter Song Name" required>
             <input type="text" id="artistName1" placeholder="Enter Artist Name (Optional)">
+            <input type="text" id="songLyrics" placeholder="Enter Song Lyrics (Not Functional Currently)" disabled>
             <button onclick="getSpotifyEmbed('songName1', 'artistName1', 'embedContainer1')">Preview Song</button>
             <div id="embedContainer1"></div>
             <button onclick="storeSongAndGoToNextPage('player1', 'songName1', 'artistName1', 'embedContainer1', '/person_two?promptType=' + getQueryParam('promptType'))">
@@ -122,10 +137,33 @@
 
         <!-- Prompt Section -->
         <div id="promptContainer" class="prompt-container">
+            <h2 class="prompt-label">Prompt</h2>
             <h2 id="prompt" class="hidden">Prompt</h2>
             <img id="promptImage" class="hidden" src="/static/pics/concert.jpg" alt="Prompt">
         </div>
+
+        
+
+        
     </div>
+
+    <div class="stacked-song-list">
+        <h2>Suggested Songs</h2>
+        <p class="note">Note: In the final version these recommended songs will dynamically be chosen based on the prompt but for this prototype they are the same for every prompt.</p>
+        <div class="stacked-song-item">
+            <iframe src="https://open.spotify.com/embed/track/2uXlHCUbq9OMUwx3hrk06o?utm_source=generator" allow="encrypted-media"></iframe>
+        </div>
+        <div class="stacked-song-item">
+            <iframe src="https://open.spotify.com/embed/track/2Fs18NaCDuluPG1DHGw1XG?utm_source=generator" allow="encrypted-media"></iframe>
+        </div>
+        <div class="stacked-song-item">
+            <iframe src="https://open.spotify.com/embed/track/003vvx7Niy0yvhvHt4a68B?utm_source=generator" allow="encrypted-media"></iframe>
+        </div>
+    </div>
+    
+    
+    
+
 
 </body>
 </html>
