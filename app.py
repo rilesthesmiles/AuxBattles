@@ -150,6 +150,11 @@ def enter_name_screen():
 def custoom_prompt_screen():
     return render_template('figma_screens/custom_prompt.html')
 
+# if __name__ == '__main__':
+#     app.run(debug=True, port=5001)
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run( port=5001, debug=True)
+
+    #host='0.0.0.0',#
 
