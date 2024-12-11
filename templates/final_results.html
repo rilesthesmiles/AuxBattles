@@ -62,6 +62,23 @@
         button:hover {
             background-color: #FF8F00;
         }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background-color: #FF6F00;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20pxrem;
+            cursor: pointer;
+        }
+
+        .home-button:hover {
+            background-color: #FF8F00;
+        }
     </style>
 
     <script>
@@ -80,6 +97,7 @@
     </script>
 </head>
 <body>
+    <button class="home-button" onclick="window.location.href='/'">Home</button>
     <div class="result-container">
         <h2>Final Game Results</h2>
         <div id="player1Score">Player 1 Total Points: </div>
